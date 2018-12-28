@@ -3,23 +3,23 @@ function Order() {
     this.isPaid = false;
 }
 
-Order.prototype.getItems = function() {
+Order.prototype.getItems = function () {
     console.log(this.items);
     return this.items;
 };
 
-Order.prototype.getPayInfo = function() {
+Order.prototype.getPayInfo = function () {
     return this.isPaid;
 };
 
-Order.prototype.payForTheOrder = function() {
+Order.prototype.payForTheOrder = function () {
     this.isPaid = true;
     Object.freeze(this);
     console.log('Your order is paid. Bon appetite!');
 };
 
-Order.prototype.addPosition = function(position) {
-    if(!this.isPaid) {
+Order.prototype.addPosition = function (position) {
+    if (!this.isPaid) {
         this.items.push(position);
         console.log('Position successfully added!');
     } else {
@@ -27,9 +27,9 @@ Order.prototype.addPosition = function(position) {
     }
 };
 
-Order.prototype.deletePosition = function(position) {
-    if(!this.isPaid) {
-        if(this.items.indexOf(position) !== -1) {
+Order.prototype.deletePosition = function (position) {
+    if (!this.isPaid) {
+        if (this.items.indexOf(position) !== -1) {
             this.items.splice(this.items.indexOf(position), 1);
             console.log('Item removed successfully');
         } else {
@@ -40,12 +40,12 @@ Order.prototype.deletePosition = function(position) {
     }
 };
 
-Order.prototype.calculateTotalPrice = function() {
+Order.prototype.calculateTotalPrice = function () {
     var totalPrice = 0;
-    if(!this.items.length) {
+    if (!this.items.length) {
         console.log('Your order is empty! Please add something.');
     } else {
-        this.items.forEach(function(item) {
+        this.items.forEach(function (item) {
             totalPrice += item.calculatePrice();
         });
     }
@@ -53,12 +53,12 @@ Order.prototype.calculateTotalPrice = function() {
     return totalPrice;
 };
 
-Order.prototype.calculateTotalCalories = function() {
+Order.prototype.calculateTotalCalories = function () {
     var totalCalories = 0;
-    if(!this.items.length) {
+    if (!this.items.length) {
         console.log('Your order is empty! Please add something.');
     } else {
-        this.items.forEach(function(item) {
+        this.items.forEach(function (item) {
             totalCalories += item.calculateCalories();
         });
     }
